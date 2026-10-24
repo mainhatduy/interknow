@@ -1,0 +1,40 @@
+.code-block {
+  --code-keyword: #7840a0;
+  --code-string: #216444;
+  --code-number: #955015;
+  --code-function: #1c558c;
+  --code-comment: #746d61;
+}
+
+.code-block .hljs-keyword,
+.code-block .hljs-literal {
+  color: var(--code-keyword);
+}
+
+.code-block .hljs-string {
+  color: var(--code-string);
+}
+
+.code-block .hljs-number {
+  color: var(--code-number);
+}
+
+.code-block .hljs-built_in,
+.code-block .hljs-title {
+  color: var(--code-function);
+}
+
+.code-block .hljs-comment,
+.code-block .hljs-meta {
+  color: var(--code-comment);
+}
+
+@media (prefers-color-scheme: dark) {
+  .code-block {
+    --code-keyword: #d3a6ee;
+    --code-string: #9ccea9;
+    --code-number: #e6b582;
+    --code-function: #9dc7f2;
+    --code-comment: #aaa394;
+  }
+}

@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/*
+ * InterKnow — phong cách học thuật / tạp chí khoa học.
+ * Bảng màu trầm (giấy ấm + mực xanh navy), chữ serif cho tiêu đề,
+ * đường kẻ mảnh thay cho bóng đổ và gradient.
+ */
+:root {
+  --background: #f6f4ef; /* giấy ngà */
+  --paper: #fffdf8; /* bề mặt thẻ */
+  --ink: #1c1b19; /* mực chính */
+  --muted: #6f6a5f; /* chữ phụ */
+  --line: #e3ded2; /* đường kẻ mảnh */
+  --line-strong: #d2ccbd; /* đường kẻ đậm hơn */
+  --accent: #1e3a5f; /* xanh navy trầm */
+  --accent-soft: #eaeef3; /* nền navy nhạt */
+  --accent-ink: #16304f; /* navy đậm cho chữ trên nền sáng */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #17150f;
+    --paper: #1e1c16;
+    --ink: #e7e3d8;
+    --muted: #a39c8c;
+    --line: #33302a;
+    --line-strong: #48443a;
+    --accent: #9db4d0;
+    --accent-soft: #252c35;
+    --accent-ink: #c4d4e6;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-source-serif);
+}
+
+body {
+  background: var(--background);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+@layer components {
+  /* Nhãn chủ đề nhỏ theo kiểu báo chí: chữ hoa, giãn khoảng. */
+  .kicker {
+    @apply text-[11px] font-semibold uppercase tracking-[0.18em] text-muted;
+  }
+
+  /* Đường kẻ ngang mảnh. */
+  .hairline {
+    @apply border-t border-line;
+  }
+
+  .lesson-section + .lesson-section {
+    @apply mt-12 border-t border-line pt-10;
+  }
+}
+
+/* Giảm chuyển động cho người dùng đã tắt animation. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
